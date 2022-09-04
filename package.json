@@ -5,9 +5,12 @@
   "main": "index.js",
   "scripts": {
     "dev:client": "cd client && npm run dev",
-    "dev:server": "cd server && npm run start:dev",
-    "dev": "concurrently \"npm:dev:*\"",
-    "test:server": "cd server && npm run test:e2e"
+    "dev:server": "cd server && npm run db:dev:up && npm run start:dev",
+    "prod:client": "cd client && npm run build && npm run preview",
+    "prod:server": "cd server && npm run db:prod:up && npm run build && npm run start:prod",
+    "start:dev": "concurrently \"npm:dev:*\"",
+    "start:prod": "concurrently \"npm:prod:*\"",
+    "test:server": "cd server && npm run db:test:up && npm run test:e2e"
   },
   "keywords": [],
   "author": "",

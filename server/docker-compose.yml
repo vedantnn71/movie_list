@@ -23,5 +23,16 @@ services:
     networks:
       - movie_list
 
+  prod-db:
+    image: postgres:13
+    ports:
+      - 5434:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 321
+      POSTGRES_DB: app
+    networks:
+      - movie_list
+      
 networks:
   movie_list:
