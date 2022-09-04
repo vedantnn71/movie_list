@@ -29,8 +29,10 @@ model Movie {
   releasedAt  DateTime
   rating      Float
   watched     Boolean
+  genre       String?
+  thumbnail   String?
+  trailer     String?
   userId      String
-  thumbnail   Bytes?
   user        User     @relation(fields: [userId], references: [id])
 
   @@map("movies")
