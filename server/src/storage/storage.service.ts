@@ -35,9 +35,11 @@ export class StorageService {
   }
 
   async uploadThumbnail(thumbnail: Express.Multer.File) {
+    const [, ext] = thumbnail.mimetype.split('/');
+
     const { data, error } = await this.storage
       .from('thumbnails')
-      .upload(Date.now() + '', thumbnail.buffer, {
+      .upload(`${Date.now()}.${ext}`, thumbnail.buffer, {
         upsert: false,
       });
 
