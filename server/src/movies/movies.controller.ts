@@ -24,12 +24,12 @@ export class MoviesController {
 
   @Get()
   async getMovies(@GetUser('id') userId: string) {
-    return this.movieService.getMovies(userId);
+    return this.movieService.getMovies();
   }
 
   @Get(':id')
-  async getMovie(@GetUser('id') userId: string, @Param('id') movieId: number) {
-    return this.movieService.getMovie({ userId, id: movieId });
+  async getMovie(@Param('id') movieId: number) {
+    return this.movieService.getMovie({ id: movieId });
   }
 
   @Post('add')

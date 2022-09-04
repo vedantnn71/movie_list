@@ -19,32 +19,31 @@ interface IUpdateMovie {
 }
 
 interface IGetMovie {
-  userId: string;
   id: number;
+}
+
+interface IDeleteMovie {
+  id: number;
+  userId: string;
 }
 
 @Injectable()
 export class MoviesService {
   constructor(
     private readonly prisma: PrismaService,
-    private readonly config: ConfigService,
     private readonly storage: StorageService,
   ) { }
 
-  async getMovies(userId: string) {
-    const movies = await this.prisma.movie.findMany({ where: { userId } });
+  async getMovies() {
+    const movies = await this.prisma.movie.findMany();
     return movies;
   }
 
-  async getMovie({ userId, id }: IGetMovie) {
+  async getMovie({ id }: IGetMovie) {
     try {
       const movie = await this.prisma.movie.findUnique({
         where: { id: +id },
       });
-
-      if (movie.userId !== userId) {
-        throw new ForbiddenException('Movie not found');
-      }
 
       return movie;
     } catch (error) {
@@ -123,7 +122,7 @@ export class MoviesService {
     return updatedMovie;
   }
 
-  async deleteMovie({ userId, id }: IGetMovie) {
+  async deleteMovie({ userId, id }: IDeleteMovie) {
     try {
       const movie = await this.prisma.movie.findUnique({
         where: { id: +id },
