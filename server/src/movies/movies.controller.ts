@@ -3,8 +3,12 @@ import {
   Body,
   Controller,
   Delete,
+  FileTypeValidator,
+  FileTypeValidatorOptions,
   Get,
+  MaxFileSizeValidator,
   Param,
+  ParseFilePipe,
   Patch,
   Post,
   UploadedFile,
@@ -37,7 +41,13 @@ export class MoviesController {
   async addMovie(
     @GetUser('id') userId: string,
     @Body() movie: AddMovieDto,
-    @UploadedFile() thumbnail: Express.Multer.File,
+    @UploadedFile(
+      new ParseFilePipe({
+        validators: [
+          new MaxFileSizeValidator({ maxSize: 4 * 1024 * 1024 }),
+          new FileTypeValidator({ fileType: /(gif|jpe?g|tiff?|png|webp|bmp)$/i }),
+        ],
+      })) thumbnail: Express.Multer.File,
   ) {
     if (!thumbnail) {
       throw new BadRequestException('Thumbnail is required');
