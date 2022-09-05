@@ -1,19 +1,18 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { Route, Routes } from 'react-router-dom';
 import { Add, Home, Login, Signup } from '@/pages';
+import { Route, Routes } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from '@/store';
 
 const App = () => {
-  const queryClient = new QueryClient();
-
   return (
-    <QueryClientProvider client={queryClient}>
+    <Provider store={store}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/add" element={<Add />} />
       </Routes>
-    </QueryClientProvider>
+    </Provider>
   )
 }
 
