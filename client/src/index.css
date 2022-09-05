@@ -3,7 +3,14 @@
 
   --primary-color: rgb(255, 91, 41);
   --black-color: rgb(31, 31, 31);
+  --black-color-15: rgba(221, 221, 221, 0.15);
   --white-color: rgb(242, 242, 242);
+  --background-color: rgb(23, 23, 27);
+  --red-color: rgb(245 75 98);
+
+  --box-shadow-05: 0px 4px 204px rgba(116, 109, 158, 0.05);
+  --box-shadow-10: 0px 4px 204px rgba(116, 109, 158, 0.10);
+  --box-shadow-15: 0px 4px 204px rgba(116, 109, 158, 0.15);
 }
 
 * {
@@ -12,7 +19,7 @@
 }
 
 body {
-  background-color: var(--black-color) !important;
+  background-color: var(--background-color) !important;
   color: var(--white-color);
   font-family: "Inter", sans-serif;
 }

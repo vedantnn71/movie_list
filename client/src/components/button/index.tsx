@@ -11,6 +11,7 @@ interface ButtonProps {
   isLoading?: boolean;
   onClick?: () => void;
   children?: ReactNode;
+  type?: "button" | "submit" | "reset" | undefined;
 }
 
 const Button = ({
@@ -22,6 +23,7 @@ const Button = ({
   disabled = false,
   isLoading = false,
   onClick,
+  type,
   children
 }: ButtonProps) => {
   const [padding, setPadding] = useState('0.75rem 1.25rem');
@@ -47,6 +49,7 @@ const Button = ({
       onClick={() => onClick && onClick()}
       disabled={disabled || isLoading}
       style={{ color, height, width, padding, borderRadius: radius }}
+      type={type}
     >
       <span className={styles.label}>{isLoading ? "Loading..." : children}</span>
     </button>
