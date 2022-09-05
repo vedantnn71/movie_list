@@ -1,14 +1,14 @@
 import { Button, Logo } from "@/components";
-import { useForm, SubmitHandler } from "react-hook-form";
 import { Fields } from "./types";
+import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { Input } from "@/components";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useSignupMutation } from "@/store/services";
-import { useNavigate } from "react-router-dom";
-import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import styles from "./signup.module.css";
 import * as yup from "yup";
-import Input from "@/components/input";
 
 const schema = yup.object({
   email: yup.string()
@@ -57,11 +57,16 @@ const Signup = () => {
         <Logo />
       </div>
 
-      <h1>Let's create an account!</h1>
+      <div className={styles.header}>
+        <h1>Let's create an account!</h1>
+        <a className={styles.label}>
+          <Link to='/login'>Already have an account?</Link>
+        </a>
+      </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <Input
-          label="Email"
+          label="email"
           placeholder="tim@apple.com"
           register={register}
           isError={!!errors.email}
@@ -70,11 +75,12 @@ const Signup = () => {
         />
 
         <Input
-          label="Password"
+          label="password"
           placeholder="********"
           register={register}
           error={errors.password?.message}
           isError={!!errors.password}
+          type="password"
           required
         />
 
