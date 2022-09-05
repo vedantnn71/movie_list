@@ -94,12 +94,15 @@ const Signup = () => {
         >
           Signup
         </Button>
-        <label
-          className={styles.label}
-          style={{ color: formError ? 'var(--red-color)' : '' }}
-        >
-          {formError && formError}
-        </label>
+
+        {formError && (
+          <label
+            className={styles.label}
+            style={{ color: formError ? 'var(--red-color)' : '' }}
+          >
+            {formError}
+          </label>
+        )}
       </form>
     </div>
   );
