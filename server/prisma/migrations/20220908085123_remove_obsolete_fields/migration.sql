@@ -1,19 +1,3 @@
-/*
-  Warnings:
-
-  - You are about to drop the `Movie` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `User` table. If the table is not empty, all the data it contains will be lost.
-
-*/
--- DropForeignKey
-ALTER TABLE "Movie" DROP CONSTRAINT "Movie_userId_fkey";
-
--- DropTable
-DROP TABLE "Movie";
-
--- DropTable
-DROP TABLE "User";
-
 -- CreateTable
 CREATE TABLE "users" (
     "id" TEXT NOT NULL,
@@ -30,10 +14,10 @@ CREATE TABLE "users" (
 CREATE TABLE "movies" (
     "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
-    "description" TEXT NOT NULL,
     "releasedAt" TIMESTAMP(3) NOT NULL,
-    "rating" DOUBLE PRECISION NOT NULL,
-    "watched" BOOLEAN NOT NULL,
+    "genre" TEXT,
+    "thumbnail" TEXT,
+    "trailer" TEXT,
     "userId" TEXT NOT NULL,
 
     CONSTRAINT "movies_pkey" PRIMARY KEY ("id")

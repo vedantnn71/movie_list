@@ -5,6 +5,9 @@
   --black-color: rgb(31, 31, 31);
   --black-color-15: rgba(221, 221, 221, 0.15);
   --white-color: rgb(242, 242, 242);
+  --white-color-30: rgba(242, 242, 242, 0.3);
+  --white-color-50: rgba(242, 242, 242, 0.5);
+  --white-color-90: rgba(242, 242, 242, 0.9);
   --background-color: rgb(23, 23, 27);
   --red-color: rgb(245 75 98);
 

@@ -17,5 +17,8 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^7.3.0"
+  },
+  "dependencies": {
+    "react-tiny-popover": "^7.1.0"
   }
 }

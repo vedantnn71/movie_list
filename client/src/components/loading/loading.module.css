@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+  min-width: 100vh;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  transition: 2s all;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #fff;
+}
+
+.container img {
+  width: 3rem !important;
+  height: 3rem !important;
+}

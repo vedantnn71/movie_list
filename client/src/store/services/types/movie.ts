@@ -2,7 +2,7 @@ export type Movie = {
   id: number;
   title: string;
   description: string;
-  releaseDate: string | Date;
+  releasedAt: string | Date;
   genre: string;
   thumbnail: string;
   trailer: string;

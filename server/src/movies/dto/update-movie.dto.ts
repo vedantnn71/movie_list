@@ -1,6 +1,5 @@
-import { IsBoolean,  IsNumber, IsOptional, IsString } from "class-validator";
-import { Transform, Type } from "class-transformer";
-import { ToBoolean } from "../decorator";
+import { IsNumber, IsOptional, IsString } from "class-validator";
+import { Type } from "class-transformer";
 
 export class UpdateMovieDto {
   @IsString()
@@ -15,15 +14,6 @@ export class UpdateMovieDto {
   @IsNumber()
   @IsOptional()
   releasedAt?: Date;
-
-  @Type(() => Number)
-  @IsNumber()
-  @IsOptional()
-  rating?: number;
-
-  @ToBoolean()
-  @IsOptional()
-  watched?: boolean;
 
   @IsString()
   @IsOptional()
