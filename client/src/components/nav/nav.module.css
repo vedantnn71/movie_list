@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  border-bottom: 2px solid #1B1B1F;
+}
+
+.container li, .ctaContainer > * {
+  cursor: pointer;
+}
+
+.ctaContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.ctaContainer img {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.popover {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--black-color);
+  box-shadow: var(--box-shadow-15);
+  border: 1px solid var(--white-color-30);
+  gap: 1rem;
+  margin: 1rem 2rem;
+  border-radius: 12px;
+  padding: 1rem 2rem;
+}
+
+.popover li {
+  list-style: none;
+  font-size: 1.15rem;
+  cursor: pointer;
+}

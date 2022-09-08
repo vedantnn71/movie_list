@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+/* Make a grid which shows 2 movies per row with full width */
+.movieList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-auto-rows: 300px;
+  grid-gap: 1rem;
+  padding: 1rem;
+  width: 100%;
+}
+
+.movies {
+  display: flex;
+  flex-direction: row;
+  /* gap: 2rem; */
+}
+
+@media screen and (max-width: 768px) {
+  .movieList {
+    grid-template-columns: repeat(auto-fit, minmax(25s0px, 1fr));
+  }
+}

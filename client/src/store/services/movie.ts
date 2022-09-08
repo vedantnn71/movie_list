@@ -1,13 +1,19 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { type Movie } from "./types";
+import { AddMovie, type Movie } from "./types";
 
 export const movieApi = createApi({
   reducerPath: 'movieApi',
   baseQuery: fetchBaseQuery({
     baseUrl: `${import.meta.env.VITE_APP_BASE_API!}`,
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem('token')}`,
-    }
+    prepareHeaders(headers, api) {
+      const token = localStorage.getItem('token');
+
+      if (token) {
+        headers.set('Authorization', `Bearer ${token}`);
+      }
+
+      return headers;
+    },
   }),
   endpoints: (builder) => ({
     getMovies: builder.query<Movie[], void>({
@@ -16,9 +22,9 @@ export const movieApi = createApi({
     getMovie: builder.query<Movie, number>({
       query: (id) => `/movies/${id}`,
     }),
-    addMovie: builder.mutation<Movie, Movie>({
+    addMovie: builder.mutation<Movie, FormData>({
       query: (movie) => ({
-        url: `/movies`,
+        url: `/movies/add`,
         method: 'POST',
         body: movie,
       }),

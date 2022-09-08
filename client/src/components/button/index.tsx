@@ -3,6 +3,7 @@ import styles from './button.module.css';
 
 interface ButtonProps {
   color?: 'primary' | 'white' | string;
+  background?: 'primary' | 'white' | string;
   borderRadius?: 'rounded' | 'square' | string;
   size?: 'small' | 'medium' | 'large';
   height?: string;
@@ -16,6 +17,7 @@ interface ButtonProps {
 
 const Button = ({
   color = 'primary',
+  background,
   borderRadius = 'square',
   size = 'medium',
   height,
@@ -48,7 +50,7 @@ const Button = ({
       className={styles.button}
       onClick={() => onClick && onClick()}
       disabled={disabled || isLoading}
-      style={{ color, height, width, padding, borderRadius: radius }}
+      style={{ background, color, height, width, padding, borderRadius: radius }}
       type={type}
     >
       <span className={styles.label}>{isLoading ? "Loading..." : children}</span>
