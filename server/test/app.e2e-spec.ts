@@ -146,10 +146,7 @@ describe('AppController (e2e)', () => {
   describe('Movie', () => {
     const movieDto = {
       title: 'The founder',
-      description: 'The founder is a movie about the founder of McDonalds',
       releasedAt: '1662223306425',
-      watched: 'true',
-      rating: '4.6',
       genre: 'Entrepreneurship',
       trailer: 'https://www.youtube.com/watch?v=AX2uz2XYkbo',
     };
@@ -161,10 +158,7 @@ describe('AppController (e2e)', () => {
 
       data.append("thumbnail", fs.readFileSync(img), { filename: "the-founder.jpg" });
       data.append("title", movieDto.title);
-      data.append("description", movieDto.description);
       data.append("releasedAt", movieDto.releasedAt);
-      data.append("rating", movieDto.rating);
-      data.append("watched", movieDto.watched);
       data.append("genre", movieDto.genre);
       data.append("trailer", movieDto.trailer);
 
@@ -191,10 +185,7 @@ describe('AppController (e2e)', () => {
         const data = new FormData();
 
         data.append("title", movieDto.title);
-        data.append("description", movieDto.description);
         data.append("releasedAt", movieDto.releasedAt);
-        data.append("rating", movieDto.rating);
-        data.append("watched", movieDto.watched);
         data.append("genre", movieDto.genre);
 
         return pactum
@@ -205,13 +196,11 @@ describe('AppController (e2e)', () => {
           .expectStatus(400)
       });
 
-      it('should throw if title and description empty', () => {
+      it('should throw if title empty', () => {
         const data = new FormData()
 
         data.append("thumbnail", fs.readFileSync(img), { filename: "the-founder.jpg" });
         data.append("releasedAt", movieDto.releasedAt);
-        data.append("rating", movieDto.rating);
-        data.append("watched", movieDto.watched);
         data.append("genre", movieDto.genre);
 
         return pactum
@@ -233,9 +222,6 @@ describe('AppController (e2e)', () => {
           .withBody(movieDto)
           .expectStatus(200)
           .expectBodyContains(movieDto.title)
-          .expectBodyContains(movieDto.description)
-          .expectBodyContains(movieDto.watched)
-          .expectBodyContains(movieDto.rating)
           .expectBodyContains(movieDto.genre)
           .expectBodyContains(movieDto.trailer);
       });
@@ -250,9 +236,6 @@ describe('AppController (e2e)', () => {
           .withBody(movieDto)
           .expectStatus(200)
           .expectBodyContains(movieDto.title)
-          .expectBodyContains(movieDto.description)
-          .expectBodyContains(movieDto.watched)
-          .expectBodyContains(movieDto.rating)
           .expectBodyContains(movieDto.genre)
           .expectBodyContains(movieDto.trailer);
       });
@@ -262,10 +245,6 @@ describe('AppController (e2e)', () => {
       it('should update the movie', () => {
         const dto = {
           title: 'The founder - how macdonalds was found',
-          description:
-            'The founder is an amazing movie about the founder of McDonalds',
-          watched: 'false',
-          rating: '5.0',
           genre: 'Business',
           releasedAt: '1662223306425',
           trailer: 'https://www.youtube.com/watch?v=oprJX5BomEc',
@@ -275,10 +254,7 @@ describe('AppController (e2e)', () => {
 
         data.append("thumbnail", fs.readFileSync(img), { filename: "the-founder.jpg" });
         data.append("title", dto.title);
-        data.append("description", dto.description);
-        data.append("rating", dto.rating);
         data.append("genre", dto.genre);
-        data.append("watched", dto.watched);
         data.append("releasedAt", dto.releasedAt);
         data.append("trailer", dto.trailer);
 
@@ -291,9 +267,6 @@ describe('AppController (e2e)', () => {
           .expectStatus(200)
           .inspect()
           .expectBodyContains(dto.title)
-          .expectBodyContains(dto.description)
-          .expectBodyContains(dto.watched)
-          .expectBodyContains(+dto.rating)
           .expectBodyContains(new Date(+dto.releasedAt))
           .expectBodyContains(dto.genre)
           .expectBodyContains(dto.trailer);

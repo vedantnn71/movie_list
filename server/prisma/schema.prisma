@@ -25,10 +25,7 @@ model User {
 model Movie {
   id          Int      @id @default(autoincrement())
   title       String
-  description String
   releasedAt  DateTime
-  rating      Float
-  watched     Boolean
   genre       String?
   thumbnail   String?
   trailer     String?

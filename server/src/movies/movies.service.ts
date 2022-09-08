@@ -101,16 +101,8 @@ export class MoviesService {
       toUpdate['genre'] = movie.genre;
     }
 
-    if (movie.rating) {
-      toUpdate['rating'] = movie.rating;
-    }
-
     if (movie.trailer) {
       toUpdate['trailer'] = movie.trailer;
-    }
-
-    if (typeof movie.watched !== 'undefined') {
-      toUpdate['watched'] = movie.watched;
     }
 
     const updatedMovie = await this.prisma.movie.update({
