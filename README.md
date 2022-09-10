@@ -1,3 +1,5 @@
+![image](https://user-images.githubusercontent.com/70624701/189471297-2ac92de7-1ad0-4e2e-8141-bc77789a1cd3.png)
+
 ### Prerequisites
 I'm assuming that you've **docker**, **pnpm** and **node** already installed on your system.
 
